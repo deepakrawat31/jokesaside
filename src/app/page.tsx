@@ -1,7 +1,7 @@
 import { GithubLogo } from "@phosphor-icons/react/dist/ssr";
 import Link from "next/link";
-import JokeBlock from "./components/JokeBlock";
-import MainBlock from "./components/MainBlock";
+import JokeBlock from "../components/JokeBlock";
+import MainBlock from "../components/MainBlock";
 
 export default function Home() {
   return (
@@ -12,9 +12,13 @@ export default function Home() {
         <h2 className="text-2xl font-semibold uppercase">connect through</h2>
         <span className="flex items-center gap-4">
           <Link
-            href="/"
+            href="https://github.com/deepakrawat31/jokesaside"
+            target="_blank"
             className="rounded-md bg-neutral-800 p-2 ring-1 ring-neutral-600/60 md:hover:motion-preset-shake md:motion-duration-300 md:motion-ease-spring-snappy"
           >
+            <p aria-hidden="true" className="aria-hidden:hidden">
+              link to github repo
+            </p>
             <GithubLogo className="size-6" />
           </Link>
         </span>

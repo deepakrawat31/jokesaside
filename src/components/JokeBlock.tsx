@@ -1,5 +1,7 @@
 "use client";
 
+import db from "@/db";
+import { jokeTable } from "@/db/schema";
 import { ArrowClockwise, BookmarkSimple } from "@phosphor-icons/react/dist/ssr";
 import { useQuery } from "@tanstack/react-query";
 
@@ -54,12 +56,28 @@ export default function JokeBlock() {
           <ArrowClockwise
             className={`size-6 ${isFetching ? "animate-spin" : ""}`}
           />
+          <p aria-hidden="true" className="aria-hidden:hidden">
+            refetch
+          </p>
         </button>
         <button
           disabled={isFetching}
+          onClick={async () => {
+            if (!data) {
+              return console.log("NO DATA!");
+            } else {
+              await db.insert(jokeTable).values({
+                joke: data.joke,
+                category: data.category,
+              });
+            }
+          }}
           className={`rounded-md bg-neutral-800 p-2 ring-1 ring-neutral-600/60 ${isFetching ? "" : "md:hover:motion-preset-shake md:motion-duration-300 md:motion-ease-spring-snappy"}`}
         >
           <BookmarkSimple className="size-6" />
+          <p aria-hidden="true" className="aria-hidden:hidden">
+            bookmark
+          </p>
         </button>
       </span>
     </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import Header from "./components/Header";
-import RQClient from "./components/RQClient";
+import Header from "../components/Header";
+import RQClient from "../components/RQClient";
 import "./globals.css";
 
 const pitagon = localFont({

@@ -11,6 +11,19 @@ export default function Profile() {
 
   const { data: session } = useSession();
 
+  function getInitials(fullName: string) {
+    const names = fullName.split(" ");
+    const firstInitial = names[0]?.charAt(0).toUpperCase() || "";
+    const lastInitial =
+      names.length > 1 ? names[names.length - 1].charAt(0).toUpperCase() : "";
+
+    return firstInitial + lastInitial;
+  }
+  let initials;
+  if (session?.user?.name != null) {
+    initials = getInitials(session?.user?.name);
+  }
+
   return (
     <div
       className="relative inline-flex cursor-pointer rounded-full"
@@ -20,12 +33,22 @@ export default function Profile() {
         }
       }}
     >
-      {!isPending || session?.user?.image != null ? (
-        <img
-          src={session?.user?.image}
-          alt="user avatar"
-          className="aspect-square h-8 rounded-md"
-        />
+      {!isPending ? (
+        <>
+          {session?.user?.image != null ? (
+            <img
+              src={session?.user?.image}
+              alt="user avatar"
+              className="aspect-square h-8 rounded-md"
+            />
+          ) : (
+            <span className="rounded-md bg-neutral-900 p-2 font-semibold uppercase text-neutral-300">
+              <p className="md:hover:motion-preset-shake md:motion-ease-spring-snappy">
+                {initials}
+              </p>
+            </span>
+          )}
+        </>
       ) : (
         <ArrowClockwise className="size-6 animate-spin" />
       )}

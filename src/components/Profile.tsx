@@ -20,7 +20,7 @@ export default function Profile() {
         }
       }}
     >
-      {!isPending || !session?.user?.image ? (
+      {!isPending || session?.user?.image != null ? (
         <img
           src={session?.user?.image}
           alt="user avatar"

@@ -1,14 +1,17 @@
 import { GithubLogo } from "@phosphor-icons/react/dist/ssr";
+import { SessionProvider } from "next-auth/react";
 import Link from "next/link";
 import JokeBlock from "../components/JokeBlock";
 import MainBlock from "../components/MainBlock";
 
 export default function Home() {
   return (
-    <main className="grid flex-1 grid-cols-1 grid-rows-3 gap-2 text-neutral-300 md:grid-cols-5">
+    <main className="grid flex-1 grid-cols-1 grid-rows-3 gap-2 overflow-hidden text-neutral-300 md:grid-cols-5">
       <MainBlock />
-      <JokeBlock />
-      <div className="col-span-1 row-span-1 flex flex-col justify-between gap-2 rounded-lg bg-neutral-900 p-4 md:col-span-2">
+      <SessionProvider>
+        <JokeBlock />
+      </SessionProvider>
+      <div className="motion-preset-fade-lg col-span-1 row-span-1 flex flex-col justify-between gap-2 rounded-lg bg-neutral-900 p-4 motion-ease-spring-smooth md:col-span-2">
         <h2 className="text-2xl font-semibold uppercase">connect through</h2>
         <span className="flex items-center gap-4">
           <Link

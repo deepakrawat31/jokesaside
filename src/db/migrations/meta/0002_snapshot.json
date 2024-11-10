@@ -1,8 +1,8 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "5ef5d67b-9394-41fa-8ac4-e411a37242b2",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "aae331bd-6b9b-4ce0-ae71-5764eccd7232",
+  "prevId": "165cbc58-6d5f-47c1-b349-f111f483d273",
   "tables": {
     "account": {
       "name": "account",
@@ -253,20 +253,21 @@
           "type": "integer",
           "primaryKey": false,
           "notNull": false,
-          "autoincrement": false
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
         }
       },
       "indexes": {},
       "foreignKeys": {
-        "jokes_user_id_user_id_fk": {
-          "name": "jokes_user_id_user_id_fk",
+        "jokes_user_id_user_email_fk": {
+          "name": "jokes_user_id_user_email_fk",
           "tableFrom": "jokes",
           "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
           "columnsTo": [
-            "id"
+            "email"
           ],
           "onDelete": "cascade",
           "onUpdate": "no action"

@@ -6,7 +6,7 @@ import MainBlock from "../components/MainBlock";
 
 export default function Home() {
   return (
-    <main className="grid flex-1 grid-cols-1 grid-rows-3 gap-2 overflow-hidden text-neutral-300 md:grid-cols-5">
+    <main className="grid flex-1 grid-cols-1 grid-rows-[min-content] gap-2 overflow-hidden text-neutral-300 md:grid-cols-5 md:grid-rows-3">
       <MainBlock />
       <SessionProvider>
         <JokeBlock />

@@ -28,6 +28,8 @@ export default function JokeBlock() {
       const res = await fetch("https://v2.jokeapi.dev/joke/Any?type=single");
       return (await res.json()) as Joke;
     },
+    staleTime: 1000 * 60 * 10,
+    refetchOnWindowFocus: false,
   });
 
   const { data: session } = useSession();

@@ -22,7 +22,7 @@ interface Joke {
 }
 
 export default function JokeBlock() {
-  const { data, error, isFetching, refetch } = useQuery({
+  const { data, isFetching, refetch } = useQuery({
     queryKey: ["joke"],
     queryFn: async () => {
       const res = await fetch("https://v2.jokeapi.dev/joke/Any?type=single");

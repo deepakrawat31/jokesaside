@@ -1,4 +1,5 @@
 import JokeGrid from "@/components/JokeGrid";
+
 import db from "@/db";
 import { jokes } from "@/db/schema";
 import { eq } from "drizzle-orm";
@@ -10,13 +11,9 @@ export default async function ProfilePage() {
 
   const userEmail = session?.user?.email;
   if (!userEmail) {
-    throw new Error("User email is not available");
+    redirect("/nosession");
   }
   const data = await db.select().from(jokes).where(eq(jokes.userId, userEmail));
 
-  if (!session?.user) {
-    redirect("/");
-  } else {
-    return <main>{<JokeGrid data={data} />}</main>;
-  }
+  return <main>{<JokeGrid data={data} />}</main>;
 }

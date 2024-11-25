@@ -12,7 +12,7 @@ export default function SignIn() {
       disabled={isPending}
       onClick={() => {
         setIsPending(true);
-        signIn("github");
+        signIn("github", { redirectTo: "/" });
       }}
     >
       {isPending ? (

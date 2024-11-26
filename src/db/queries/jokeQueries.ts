@@ -23,3 +23,8 @@ export async function insertJoke(data: {
 export async function deleteJoke(id: string) {
   await db.delete(jokes).where(eq(jokes.id, id));
 }
+
+export async function getJokes(mail: string) {
+  const data = await db.select().from(jokes).where(eq(jokes.userId, mail));
+  return data;
+}
